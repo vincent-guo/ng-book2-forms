@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-ng-model',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-ng-model.component.css']
 })
 export class FormNgModelComponent implements OnInit {
+  myForm: FormGroup;
+  productName: string;
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      'productName': ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
+  }
+
+  onSubmit(value: string): void {
+    console.log('you submitted value: ', value);
   }
 
 }
